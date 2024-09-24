@@ -25,5 +25,4 @@ elif choice == "subtract":
 elif choice == "multiply": 
     print(num1 * num2)
 elif choice == "divide": 
-    print(num1/num2)
-
+    print(num1/num2) 
