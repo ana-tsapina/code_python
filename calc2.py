@@ -72,4 +72,4 @@ Calculator Menu Options:
         elif menu_result == 5: 
             print(f"See you later :) ")
 
-        breaks
+        break
