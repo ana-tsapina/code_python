@@ -5,10 +5,7 @@
 def numericInput(prompt): 
 
     while True: 
-
         value = input(prompt)
-
-
     try: 
         value = float(value)
         return value 
@@ -20,49 +17,59 @@ def numericInput(prompt):
 
 def menu(): 
     menu = """
-
 Calculator Menu Options:
 
     1. Add 
     2. Subtract 
-    3. Divide 
-    4. Exit Program 
+    3. Multiply
+    4. Divide 
+    5. Exit Program 
 
 
 """
 
     while True: 
+
         print(menu)
         user_choice = input("User's Choice: ").lower()
-        #string method, edits string to all lower case 
+        #.lower() is a string method, edits string to all lower case 
 
-        if user_choice in {'add', 'l', '+'}:
+        if user_choice in {'add', '1', ' + '}:
             return 1
-        elif user_choice in {'subtract', '2', '-'}: 
+        elif user_choice in {'subtract', '2', ' - '}: 
             return 2
-        elif user_choice in ('multiply', '3', '*'):
+        elif user_choice in ('multiply', '3', ' * '):
             return 3
-        elif user_choice in ('divide', '4', '/'):    
+        elif user_choice in ('divide', '4', ' / '):    
             return 4
-        elif user_choice in ('exit', '5'): 
+        elif user_choice in ('exit', ' 5 '): 
             return 5  
         else: 
             print(f"{user_choice} is not a menu option")
 
 
-    if menu_result == 1: 
-        print(f"{num1} + {num2} = {answer}")
-    elif menu_result == 2: 
-         print(f"{num1} - {num2} = {answer}")
-    elif menu_result == 3: 
-         print(f"{num1} * {num2} = {answer}")
-    elif menu_result == 4: 
-        try: 
-            answer = num1/num2
-            print(f"{num1} / {num2} = {answer}")
-        except ZeroDivisionError: 
-            print(f"Can't diviide by zero, please try again")
+    while True: 
 
-    elif menu_result == 5: 
-         print(f"See you later :) ")
-        break
+        num1 = numericInput("Enter a number: ")
+        num2 = numericInput("Enter another number: ")
+
+        answer = 0 
+
+        if menu_result == 1: 
+            Print(f"{num1} + {num2} = {answer}")
+        elif menu_result == 2: 
+            print(f"{num1} - {num2} = {answer}")
+        elif menu_result == 3: 
+            print(f"{num1} * {num2} = {answer}")
+        elif menu_result == 4: 
+
+            try: 
+                answer = num1 / num2
+                print(f"{num1} / {num2} = {answer}")
+            except ZeroDivisionError: 
+                print(f"Can't diviide by zero, please try again. ") 
+
+        elif menu_result == 5: 
+            print(f"See you later :) ")
+
+        breaks
