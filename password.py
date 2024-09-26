@@ -1,11 +1,11 @@
-#Goal: Create a password generator 
+#Goal: Create a password generator in Streamlit 
 
 # Required: password length, password criteria, uppercase characters? special character? 
 # Generate password that meets requirements 
 # Output the generated password  
 import random 
 
-print("Welcome to our password generating app!")
+# print("Welcome to our password generating app!")
 
 pwd_length = int(input("Enter the length of the password: "))
 
@@ -37,7 +37,6 @@ while len(new_password) != pwd_length:
     new_password = new_password + random_symbol 
 
 print(f"{new_password} has been generated. ")
-
 
 
 
