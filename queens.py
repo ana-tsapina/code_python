@@ -4,7 +4,7 @@ min = int(input("What are the minutes? "))
 
 if (hour > 24):
     print("Error")
-    exit() #attempt to quit program is input is wrong / maybe try using some sort of loop? 
+    exit() #attempt to quit program if input is wrong / maybe try using some sort of loop? 
 if (min > 59):
     print("Error")
     exit()
@@ -16,3 +16,5 @@ elif (hour == 18 and 0 <= min < 30):
 else:
     print("The register's office is closed")
     
+    if (9 <= hour < 18):
+
