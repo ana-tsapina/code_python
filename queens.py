@@ -1,7 +1,6 @@
 hour = int(input("What hour is it? "))
 min = int(input("What are the minutes? "))
 
-
 if (hour > 24):
     print("Error")
     exit() #attempt to quit program if input is wrong / maybe try using some sort of loop? 
