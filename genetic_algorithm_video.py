@@ -1,31 +1,32 @@
 import random
 
 # Target string
-TARGET = "tacocat"
+target = "tacocat"
+length = 7
 
-# Parameters
-POPULATION_SIZE = 100
-MUTATION_RATE = 0.01
-MAX_GENERATIONS = 1000
-CROSSOVER_RATE = 0.7
+# Initalizing important variables 
+population_size = 100
+maximum_generations = 1000
+mutation_rate = 0.01
+crossover_rate = 0.7 
 
-# Function to generate a random string of the same length as TARGET
+# generates a random string that is the same length as the target from a given list of characters
 def random_string(length):
     return ''.join(random.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(length))
 
-# Fitness function to calculate how many characters in the individual match the target string
+# fitness is based on how many of the same characters an individual has when compared to the target
 def fitness(individual):
-    return sum(1 for i, char in enumerate(individual) if char == TARGET[i])
+    return sum(1 for i, char in enumerate(individual) if char == target[i])
 
-# Selection function: Select individuals based on their fitness
+# select function: chooses top half of the population based on fitness
 def select(population):
     # Sort population by fitness in descending order and pick the top half
     population.sort(key=lambda x: fitness(x), reverse=True)
-    return population[:POPULATION_SIZE // 2]
+    return population[:population_size // 2]
 
-# Crossover function: Combine two parents to create two offspring
+# crossover function: combines two fit parents to create two offspring
 def crossover(parent1, parent2):
-    if random.random() < CROSSOVER_RATE:
+    if random.random() < crossover_rate:
         # Choose a random crossover point
         point = random.randint(1, len(parent1) - 1)
         # Create two offspring
@@ -35,47 +36,47 @@ def crossover(parent1, parent2):
     else:
         return parent1, parent2
 
-# Mutation function: Mutate an individual by changing one character randomly
+# mutation function: occasionally mutate an individual by changing one character randomly to maintain genetic diversity 
 def mutate(individual):
-    if random.random() < MUTATION_RATE:
+    if random.random() < mutation_rate:
         index = random.randint(0, len(individual) - 1)
         new_char = random.choice('abcdefghijklmnopqrstuvwxyz')
         individual = individual[:index] + new_char + individual[index+1:]
     return individual
 
-# Main Genetic Algorithm function
+# Main Algorithm function
 def genetic_algorithm():
     # Initialize population with random strings
-    population = [random_string(len(TARGET)) for _ in range(POPULATION_SIZE)]
+    population = [random_string(len(target)) for _ in range(population_size)]
 
-    for generation in range(MAX_GENERATIONS):
-        # Evaluate fitness and select the top half of the population
+    for generation in range(maximum_generations):
+        # fitness evaluation and selection of top half of population 
         population = select(population)
 
-        # Generate new population through crossover and mutation
-        new_generation = []
-        while len(new_generation) < POPULATION_SIZE:
+        # creation of next generation through crossover and mutation
+        next_generation = []
+        while len(next_generation) < population_size:
             parent1, parent2 = random.choices(population, k=2)
             offspring1, offspring2 = crossover(parent1, parent2)
-            new_generation.append(mutate(offspring1))
-            new_generation.append(mutate(offspring2))
+            next_generation.append(mutate(offspring1))
+            next_generation.append(mutate(offspring2))
 
-        # Replace the old population with the new one
-        population = new_generation
+        # Replace the old generation with the new one
+        population = next_generation
 
-        # Check if the target string is found
+        # Check if the target string has been found 
         for individual in population:
-            if individual == TARGET:
-                print(f"Target string '{TARGET}' found in generation {generation}")
+            if individual == target:
+                print(f"The target string '{target}' has been found in generation {generation}! ")
                 return individual
 
-    print("Target string not found within the given number of generations.")
+    print("Target string was unable to be found in the given number of generations.")
     return None
 
-# Run the genetic algorithm
+# Run the algorithm
 result = genetic_algorithm()
 
 if result:
-    print(f"Found target string: {result}")
+    print(f"Target string: {result} has been found")
 else:
-    print("Failed to find the target string.")
+    print("{target} has not been found ")
