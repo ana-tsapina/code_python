@@ -1,10 +1,11 @@
 def reverse(word): 
+  
+    if len(word) == 0: 
+        return word 
+    else: 
+        return reverse(word[1:]) + word[0]
 
-    backward = ""
-
-    backward.append(word[-1])
-
-    new = 
 
 
-    backward.reverse(word)
+test = input("What would you like to reverse? ")
+print(reverse(test))
