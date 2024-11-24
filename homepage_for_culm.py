@@ -10,10 +10,5 @@ st.set_page_config(
 )
 
 st.title("Aplify your potential")
+st.sidebar.sucess("What do you want to do? ")
 
-
-switch = st.button("Log")
-
-if switch: 
-    culm = pages[log]
-    st.switchpage(log)
