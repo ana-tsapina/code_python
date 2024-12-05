@@ -59,7 +59,7 @@ class Inventory:
             print(f"Error: {e}")
 
 
-p1 = Inventory("Tea")
+p1 = Inventory("Tea", 7, "hot", 3)
 print(p1.name)
 p1.price = 20
-print(f"Product: {p1.name}, price {p1.price}")
+print(f"Product: {p1.name} | Price: {p1.price} | Description: {p1.desc} | Quantity: {p1.quantity}")
