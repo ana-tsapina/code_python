@@ -21,6 +21,6 @@ class Member:
 member1 = Member("Jasper Park", 1)
 member1.name = "poopoo"
 print(member1)
-print(member1.acc)
+print(member1.__acc)
 
 
