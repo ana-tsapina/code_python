@@ -1,6 +1,6 @@
 def main(): 
     get_student()
-    print(f"{name} from {house}")
+    print(f"{name} from {student["house"]}")
 
 
 def get_student(): 
